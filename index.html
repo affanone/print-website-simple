@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contoh Page Print Generator</title>
+	<link rel="stylesheet" type="text/css" href="css/bs4.css">
+</head>
+<body class="bg-light">
+	<div class="kontenku">
+		<div class="container">
+			<div class="card card-body mt-5">
+				<h2>Hello Word</h2>
+				<p class="text-danger">saya menggunakan bootstrop 4 </p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+			<div class="text-center mt-4 media-no-print">
+				<button class="btn btn-lg btn-primary" onclick="print2()">CETAK</button>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- call a script -->
+<script type="text/javascript" src="js/script.min.js"></script>
+<script type="text/javascript">
+	function print2(){
+		// fungsi print ketika di klik 
+		// panggil generatornya
+		var option = { // ini adalah opsi untuk mengatur generatornya
+			body:document.querySelector('.kontenku').innerHTML+`
+
+				<div class="tambahan text-center mt-3">
+					<img src="{{inigambar}}" class="img-thumbnail w-25">
+				</div>
+
+			`,
+			title:'halo',
+			manual:'Cetak',
+			style:`
+			p{
+				color:red;
+			}
+			`,
+			css:'css/bs4.css',
+			src:{
+				inigambar:'images/contoh.jpeg'
+			},
+			attrBody:'apaya="csdcsdc"',
+			replace:{
+				Lorem:'Affan',
+				'Duis aute irure dolor':'alamat sampang'
+			}
+		}
+		var n = printPageGenerator(option);
+		console.log(n);
+	}
+</script>
+</html>
